@@ -32,10 +32,38 @@
               MouseDown="HeaderGrid_MouseDown"
               Background="{StaticResource DisabledColor}">
             <Grid.ColumnDefinitions>
+                <!-- Logo Column -->
+                <ColumnDefinition Width="50" />
+                <!-- Status Label Column -->
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+                <!-- Window Controls Column -->
+                <ColumnDefinition Width="50" />
             </Grid.ColumnDefinitions>
+
+
+            <!-- Window Controls -->
+            <StackPanel Orientation="Horizontal" 
+                        Grid.Column="2"
+                        HorizontalAlignment='Right'>
+                
+                <Button x:Name="MinimizeWindowButton"
+                        Content="_"
+                        Style='{StaticResource ControlButtonStyle}'
+                        Width="25"
+                        Click='MinimizeWindowButton_Click'/>
+
+                <Button x:Name="CloseWindowButton"
+                        Content="&#x2715;"
+                         Style='{StaticResource ControlButtonStyle}'
+                        Width="25"
+                        Click='CloseWindowButton_Click'/>
+            </StackPanel>
+
+            <TextBlock Grid.Column='1'
+                       TextAlignment='Center'
+                       VerticalAlignment='Center'
+                       HorizontalAlignment='Center'
+                       Text='DISABLED' />
         </Grid>
 
         <!-- Columns Definition for Body -->
