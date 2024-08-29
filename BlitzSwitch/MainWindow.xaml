@@ -40,12 +40,23 @@
                 <ColumnDefinition Width="50" />
             </Grid.ColumnDefinitions>
 
+            <Image Grid.Column='0'
+                   Stretch='Fill'
+                   Margin='1,1,20,0' 
+                   Source='/Resources/BlackBlitzLogo.png'  />
+
+            <TextBlock Grid.Column='1'
+                       TextAlignment='Center'
+                       VerticalAlignment='Center'
+                       HorizontalAlignment='Center'
+                       FontSize='15'
+                       Text='DISABLED' />
 
             <!-- Window Controls -->
             <StackPanel Orientation="Horizontal" 
                         Grid.Column="2"
                         HorizontalAlignment='Right'>
-                
+
                 <Button x:Name="MinimizeWindowButton"
                         Content="_"
                         Style='{StaticResource ControlButtonStyle}'
@@ -58,16 +69,10 @@
                         Width="25"
                         Click='CloseWindowButton_Click'/>
             </StackPanel>
-
-            <TextBlock Grid.Column='1'
-                       TextAlignment='Center'
-                       VerticalAlignment='Center'
-                       HorizontalAlignment='Center'
-                       Text='DISABLED' />
         </Grid>
 
         <!-- Columns Definition for Body -->
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
