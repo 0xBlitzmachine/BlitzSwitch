@@ -12,7 +12,11 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         ResizeMode="NoResize"
-        FontFamily="Jura">
+        FontFamily="Jura"
+        
+        Background="{StaticResource WindowBackgroundColor}"
+        BorderBrush="{StaticResource DisabledColor}"
+        BorderThickness="1">
 
 
     <Grid>
@@ -23,7 +27,10 @@
         </Grid.RowDefinitions>
 
         <!-- Columns Defintion for Header // Logo - Status - Window Controls -->
-        <Grid Grid.Row="0">
+        <Grid x:Name="HeaderGrid"
+              Grid.Row="0"
+              MouseDown="HeaderGrid_MouseDown"
+              Background="{StaticResource DisabledColor}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
