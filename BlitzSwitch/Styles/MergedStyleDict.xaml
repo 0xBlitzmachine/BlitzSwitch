@@ -6,5 +6,6 @@
         <ResourceDictionary Source='ControlButtonStyle.xaml' />
         <ResourceDictionary Source='CustomTextBoxStyle.xaml' />
         <ResourceDictionary Source='CustomButtonStyle.xaml' />
+        <ResourceDictionary Source='PrimaryButtonStyle.xaml' />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

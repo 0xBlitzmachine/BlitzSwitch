@@ -47,6 +47,7 @@
                    Source='/Resources/BlackBlitzLogo.png'  />
 
             <TextBlock Grid.Column='1'
+                       x:Name='HeaderStatusLabel'
                        TextAlignment='Center'
                        VerticalAlignment='Center'
                        HorizontalAlignment='Center'
@@ -79,10 +80,13 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column='0'>
-                <Button Content='Test'
-                        BorderBrush='{StaticResource EnabledColor}'
-                        BorderThickness='1'/>
+            <StackPanel Grid.Column='0'
+                        VerticalAlignment='Center'
+                        HorizontalAlignment='Center'>
+                <Button x:Name='SwitchStateButton'
+                        Click='SwitchStateButton_Click'
+                        Content='ENABLE'
+                        Style='{StaticResource PrimaryButtonStyle}'/>
             </StackPanel>
 
             <StackPanel Grid.Column='1'>
@@ -98,17 +102,24 @@
                          Text='T' 
                          Style='{StaticResource CustomTextBoxStyle}' 
                          KeyDown='HotkeyTextBox_KeyDown'
+                         GotFocus='HotkeyTextBox_GotFocus'
+                         LostFocus='HotkeyTextBox_LostFocus'
                          Canvas.Left='50'
                          Canvas.Top='19' HorizontalAlignment='Center' VerticalAlignment='Top' />
                 </Canvas>
 
                 <StackPanel Orientation='Horizontal'
                             HorizontalAlignment='Center'>
-                    <Button Content='Set'
+                    <Button x:Name='SetHotkeyButton'
+                            Click='SetHotkeyButton_Click'
+                            Content='Set'
                             Style='{StaticResource CustomButtonStyle}'
                             IsEnabled='False'/>
-                    <Button Content='Abort' 
-                            Style='{StaticResource CustomButtonStyle}'/>
+                    <Button x:Name='AbortSettingHotkeyButton'
+                            Click='AbortSettingHotkeyButton_Click'
+                            Content='Abort' 
+                            Style='{StaticResource CustomButtonStyle}'
+                            IsEnabled='False'/>
                 </StackPanel>
 
             </StackPanel>
