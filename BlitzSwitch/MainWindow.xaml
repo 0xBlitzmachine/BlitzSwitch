@@ -80,13 +80,15 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column='0'>
-                <Button Content='Test' />
+                <Button Content='Test'
+                        BorderBrush='{StaticResource EnabledColor}'
+                        BorderThickness='1'/>
             </StackPanel>
 
             <StackPanel Grid.Column='1'>
 
 
-                <Canvas Height='80'>
+                <Canvas Height='85'>
                     <Image Source='/Resources/Empty_Keystroke_Small.png'
                        Stretch='Fill'
                        Canvas.Left='37'
@@ -103,11 +105,10 @@
                 <StackPanel Orientation='Horizontal'
                             HorizontalAlignment='Center'>
                     <Button Content='Set'
-                            Margin='5'
-                            Padding='2'/>
-                    <Button Content='Abort'
-                            Margin='5'
-                            Padding='2'/>
+                            Style='{StaticResource CustomButtonStyle}'
+                            IsEnabled='False'/>
+                    <Button Content='Abort' 
+                            Style='{StaticResource CustomButtonStyle}'/>
                 </StackPanel>
 
             </StackPanel>
