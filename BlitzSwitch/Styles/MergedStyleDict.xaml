@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source='/Colors/Window.xaml' />
+        <ResourceDictionary Source='ControlButtonStyle.xaml' />
+        <ResourceDictionary Source='CustomTextBoxStyle.xaml' />
+        <ResourceDictionary Source='CustomButtonStyle.xaml' />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

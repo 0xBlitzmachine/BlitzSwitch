@@ -4,6 +4,7 @@
     <Style x:Key='CustomButtonStyle'
            TargetType='{x:Type Button}'>
 
+        <Setter Property='Background' Value='Transparent' />
 
     </Style>
 

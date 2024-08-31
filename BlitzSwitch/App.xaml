@@ -7,9 +7,7 @@
 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source='/Colors/Window.xaml' />
-                <ResourceDictionary Source='/Styles/ControlButtonStyle.xaml' />
-                <ResourceDictionary Source='/Styles/CustomTextBoxStyle.xaml' />
+                <ResourceDictionary Source='/Styles/MergedStyleDict.xaml' />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
