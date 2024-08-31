@@ -16,5 +16,11 @@ namespace BlitzSwitch
 
         private void CloseWindowButton_Click(object sender, RoutedEventArgs e)
             => Application.Current.Shutdown();
+
+        private void HotkeyTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
+            HotkeyTextBox.Text = e.Key.ToString();
+        }
     }
 }
