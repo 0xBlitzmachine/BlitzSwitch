@@ -13,6 +13,7 @@
         WindowStyle="None"
         ResizeMode="NoResize"
         FontFamily="Jura"
+        FontSize='17'
         
         Background="{StaticResource WindowBackgroundColor}"
         BorderBrush="{StaticResource DisabledColor}"
@@ -82,19 +83,34 @@
                 <Button Content='Test' />
             </StackPanel>
 
-            <Canvas Grid.Column='1'>
-                <Image Source='/Resources/Empty_Keystroke_Small.png'
+            <StackPanel Grid.Column='1'>
+
+
+                <Canvas Height='80'>
+                    <Image Source='/Resources/Empty_Keystroke_Small.png'
                        Stretch='Fill'
                        Canvas.Left='37'
-                       Canvas.Top='21'/>
+                       Canvas.Top='6' HorizontalAlignment='Center' VerticalAlignment='Top'/>
 
-                <TextBox x:Name='HotkeyTextBox' 
+                    <TextBox x:Name='HotkeyTextBox' 
                          Text='T' 
                          Style='{StaticResource CustomTextBoxStyle}' 
                          KeyDown='HotkeyTextBox_KeyDown'
                          Canvas.Left='50'
-                         Canvas.Top='34' />
-            </Canvas>
+                         Canvas.Top='19' HorizontalAlignment='Center' VerticalAlignment='Top' />
+                </Canvas>
+
+                <StackPanel Orientation='Horizontal'
+                            HorizontalAlignment='Center'>
+                    <Button Content='Set'
+                            Margin='5'
+                            Padding='2'/>
+                    <Button Content='Abort'
+                            Margin='5'
+                            Padding='2'/>
+                </StackPanel>
+
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>
