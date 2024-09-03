@@ -1,15 +1,35 @@
 ﻿using BlitzSwitch.Misc;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 
 namespace BlitzSwitch
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        public bool isHotkeyListening = false;
+        private bool isHotkeyListening = false;
 
-        public MainWindow() =>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public bool IsHotkeyListening
+        {
+            get => this.isHotkeyListening;
+            set
+            {
+                if (this.isHotkeyListening != value)
+                {
+                    this.isHotkeyListening = value;
+                    this.SwitchStateButton.Content = value ? "DISABLE" : "ENABLE";
+                    this.OnPropertyChanged(nameof(IsHotkeyListening));
+                }
+            }
+        }
+
+        public MainWindow()
+        {
+            this.DataContext = this;
             this.InitializeComponent();
+        }
 
 
 
@@ -43,6 +63,7 @@ namespace BlitzSwitch
 
         private void HotkeyTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
+            this.isHotkeyListening = false;
             this.SetHotkeyButton.IsEnabled = true;
             this.AbortSettingHotkeyButton.IsEnabled = true;
         }
@@ -53,30 +74,14 @@ namespace BlitzSwitch
             this.AbortSettingHotkeyButton.IsEnabled = false;
         }
 
-        private void SwitchStateButton_Click(object sender, RoutedEventArgs e)
+        protected void OnPropertyChanged(string propertyName)
         {
-            this.isHotkeyListening = !this.isHotkeyListening;
-            this.SwitchStateVisually(this.isHotkeyListening);
-            this.StatusIndicator.IsStatusActive = this.isHotkeyListening;
+            if (this.PropertyChanged != null)
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private void SwitchStateVisually(bool isEnabled)
-        {
-            switch (isEnabled)
-            {
-                case true:
-                    this.BorderBrush = Collection.ColorCollection.enabledColor;
-                    this.HeaderGrid.Background = Collection.ColorCollection.enabledColor;
-                    this.HeaderStatusLabel.Text = "ENABLED";
-                    this.SwitchStateButton.Content = "DISABLE";
-                    break;
-                default:
-                    this.BorderBrush = Collection.ColorCollection.disabledColor;
-                    this.HeaderGrid.Background = Collection.ColorCollection.disabledColor;
-                    this.HeaderStatusLabel.Text = "DISABLED";
-                    this.SwitchStateButton.Content = "ENABLE";
-                    break;
-            }
-        }
+        private void SwitchStateButton_Click(object sender, RoutedEventArgs e) =>
+            this.IsHotkeyListening = !this.IsHotkeyListening;
+
     }
 }
