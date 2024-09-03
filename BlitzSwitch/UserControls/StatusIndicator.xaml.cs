@@ -1,44 +1,38 @@
-﻿using BlitzSwitch.Misc;
-using System.Windows;
+﻿using System.ComponentModel;
 using System.Windows.Controls;
 
 namespace BlitzSwitch.UserControls
 {
-    public partial class StatusIndicator : UserControl
+    public partial class StatusIndicator : UserControl, INotifyPropertyChanged
     {
-        private string[] statusText = new string[2] { "DISABLED", "ENABLED" };
         private bool isStatusActive;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public bool IsStatusActive
         {
             get => this.isStatusActive;
             set
             {
-                this.isStatusActive = value;
-                this.refreshVisualComponents(value);
+                if (this.isStatusActive != value)
+                {
+                    this.isStatusActive = value;
+                    this.OnPropertyChanged(nameof(IsStatusActive));
+                }
             }
         }
 
         public StatusIndicator()
         {
+            this.DataContext = this;
             this.InitializeComponent();
-            this.Loaded += StatusIndicator_Loaded;
         }
 
-        private void StatusIndicator_Loaded(object sender, RoutedEventArgs e) =>
-            this.IsStatusActive = ((MainWindow)Window.GetWindow(this)).isHotkeyListening;
-
-        private void refreshVisualComponents(bool status)
+        protected void OnPropertyChanged(string propertyName)
         {
-            switch (status)
+            if (this.PropertyChanged != null)
             {
-                case true:
-                    this.StatusText.Text = statusText[1];
-                    this.StatusBackground.Background = Collection.ColorCollection.enabledColor;
-                    break;
-                case false:
-                    this.StatusText.Text = statusText[0];
-                    this.StatusBackground.Background = Collection.ColorCollection.disabledColor;
-                    break;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }
