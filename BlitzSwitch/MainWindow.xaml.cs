@@ -6,21 +6,21 @@ namespace BlitzSwitch
 {
     public partial class MainWindow : Window
     {
-        private bool isEnabled = false;
+        public bool isHotkeyListening = false;
+
+        public MainWindow() =>
+            this.InitializeComponent();
 
 
-        public MainWindow()
-           => this.InitializeComponent();
 
+        private void HeaderGrid_MouseDown(object sender, MouseButtonEventArgs e) =>
+            this.DragMove();
 
-        private void HeaderGrid_MouseDown(object sender, MouseButtonEventArgs e)
-            => this.DragMove();
+        private void MinimizeWindowButton_Click(object sender, RoutedEventArgs e) =>
+            this.WindowState = WindowState.Minimized;
 
-        private void MinimizeWindowButton_Click(object sender, RoutedEventArgs e)
-            => this.WindowState = WindowState.Minimized;
-
-        private void CloseWindowButton_Click(object sender, RoutedEventArgs e)
-            => Application.Current.Shutdown();
+        private void CloseWindowButton_Click(object sender, RoutedEventArgs e) =>
+            Application.Current.Shutdown();
 
         private void HotkeyTextBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -55,8 +55,9 @@ namespace BlitzSwitch
 
         private void SwitchStateButton_Click(object sender, RoutedEventArgs e)
         {
-            this.isEnabled = !this.isEnabled;
-            this.SwitchStateVisually(isEnabled);
+            this.isHotkeyListening = !this.isHotkeyListening;
+            this.SwitchStateVisually(this.isHotkeyListening);
+            this.StatusIndicator.IsStatusActive = this.isHotkeyListening;
         }
 
         private void SwitchStateVisually(bool isEnabled)
@@ -67,13 +68,13 @@ namespace BlitzSwitch
                     this.BorderBrush = Collection.ColorCollection.enabledColor;
                     this.HeaderGrid.Background = Collection.ColorCollection.enabledColor;
                     this.HeaderStatusLabel.Text = "ENABLED";
-                    SwitchStateButton.Content = "DISABLE";
+                    this.SwitchStateButton.Content = "DISABLE";
                     break;
                 default:
                     this.BorderBrush = Collection.ColorCollection.disabledColor;
                     this.HeaderGrid.Background = Collection.ColorCollection.disabledColor;
                     this.HeaderStatusLabel.Text = "DISABLED";
-                    SwitchStateButton.Content = "ENABLE";
+                    this.SwitchStateButton.Content = "ENABLE";
                     break;
             }
         }

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlitzSwitch"
+        xmlns:UserControls="clr-namespace:BlitzSwitch.UserControls"
         mc:Ignorable="d"
         
         Title="MainWindow" 
@@ -18,7 +19,6 @@
         Background="{StaticResource WindowBackgroundColor}"
         BorderBrush="{StaticResource DisabledColor}"
         BorderThickness="1">
-
 
     <Grid>
         <!-- Header and Body Row Definition-->
@@ -84,6 +84,8 @@
             </StackPanel>
 
             <StackPanel Grid.Column='0'>
+
+                <UserControls:StatusIndicator x:Name='StatusIndicator' />
 
                 <Canvas Height='85'>
                     <Image Source='/Resources/Empty_Keystroke_Small.png'

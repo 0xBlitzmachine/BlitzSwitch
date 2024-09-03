@@ -7,15 +7,20 @@
              mc:Ignorable="d" 
              
              d:DesignHeight="20" 
-             d:DesignWidth="70"
-             d:FontFamily='Jura'>
+             d:DesignWidth="80"
+             d:FontFamily='Jura'
+             d:FontWeight='Bold'
+             d:FontSize='12'>
+
+    <UserControl.Resources>
+        <DataTemplate DataType='AccessText' x:Key='Text' />
+    </UserControl.Resources>
     <Grid>
         <Border x:Name='StatusBackground'
                 CornerRadius='10'
                 Background='{StaticResource DisabledColor}'>
 
             <TextBlock x:Name='StatusText'
-                       Text='DISABLED'
                        VerticalAlignment='Center'
                        HorizontalAlignment='Center'/>
         </Border>
