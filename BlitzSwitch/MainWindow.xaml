@@ -75,13 +75,7 @@
 
         <!-- Columns Definition for Body -->
         <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <StackPanel Grid.Column='0'
-                        VerticalAlignment='Center'
+            <StackPanel VerticalAlignment='Center'
                         HorizontalAlignment='Center'>
                 <Button x:Name='SwitchStateButton'
                         Click='SwitchStateButton_Click'
@@ -89,14 +83,13 @@
                         Style='{StaticResource PrimaryButtonStyle}'/>
             </StackPanel>
 
-            <StackPanel Grid.Column='1'>
-
+            <StackPanel Grid.Column='0'>
 
                 <Canvas Height='85'>
                     <Image Source='/Resources/Empty_Keystroke_Small.png'
                        Stretch='Fill'
                        Canvas.Left='37'
-                       Canvas.Top='6' HorizontalAlignment='Center' VerticalAlignment='Top'/>
+                       Canvas.Top='6' HorizontalAlignment='Left' VerticalAlignment='Top' Height='36' Width='37'/>
 
                     <TextBox x:Name='HotkeyTextBox' 
                          Text='T' 
@@ -104,8 +97,8 @@
                          KeyDown='HotkeyTextBox_KeyDown'
                          GotFocus='HotkeyTextBox_GotFocus'
                          LostFocus='HotkeyTextBox_LostFocus'
-                         Canvas.Left='50'
-                         Canvas.Top='19' HorizontalAlignment='Center' VerticalAlignment='Top' />
+                         Canvas.Left='30'
+                         Canvas.Top='12' HorizontalAlignment='Left' VerticalAlignment='Top' />
                 </Canvas>
 
                 <StackPanel Orientation='Horizontal'

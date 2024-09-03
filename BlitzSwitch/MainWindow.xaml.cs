@@ -1,16 +1,17 @@
-﻿using System.Windows;
+﻿using BlitzSwitch.Misc;
+using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
 
 namespace BlitzSwitch
 {
     public partial class MainWindow : Window
     {
-
         private bool isEnabled = false;
 
+
         public MainWindow()
-            => this.InitializeComponent();
+           => this.InitializeComponent();
+
 
         private void HeaderGrid_MouseDown(object sender, MouseButtonEventArgs e)
             => this.DragMove();
@@ -23,8 +24,11 @@ namespace BlitzSwitch
 
         private void HotkeyTextBox_KeyDown(object sender, KeyEventArgs e)
         {
+            if (Collection.allowedHotkeys.Contains(e.Key))
+            {
+                HotkeyTextBox.Text = e.Key.ToString();
+            }
             e.Handled = true;
-            HotkeyTextBox.Text = e.Key.ToString();
         }
 
         private void SetHotkeyButton_Click(object sender, RoutedEventArgs e)
@@ -39,14 +43,14 @@ namespace BlitzSwitch
 
         private void HotkeyTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            SetHotkeyButton.IsEnabled = true;
-            AbortSettingHotkeyButton.IsEnabled = true;
+            this.SetHotkeyButton.IsEnabled = true;
+            this.AbortSettingHotkeyButton.IsEnabled = true;
         }
 
         private void HotkeyTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            SetHotkeyButton.IsEnabled = false;
-            AbortSettingHotkeyButton.IsEnabled = false;
+            this.SetHotkeyButton.IsEnabled = false;
+            this.AbortSettingHotkeyButton.IsEnabled = false;
         }
 
         private void SwitchStateButton_Click(object sender, RoutedEventArgs e)
@@ -57,20 +61,17 @@ namespace BlitzSwitch
 
         private void SwitchStateVisually(bool isEnabled)
         {
-            SolidColorBrush enabledColor = Application.Current.TryFindResource("EnabledColor") as SolidColorBrush;
-            SolidColorBrush disabledColor = Application.Current.TryFindResource("DisabledColor") as SolidColorBrush;
-
             switch (isEnabled)
             {
                 case true:
-                    this.BorderBrush = enabledColor;
-                    this.HeaderGrid.Background = enabledColor;
+                    this.BorderBrush = Collection.ColorCollection.enabledColor;
+                    this.HeaderGrid.Background = Collection.ColorCollection.enabledColor;
                     this.HeaderStatusLabel.Text = "ENABLED";
                     SwitchStateButton.Content = "DISABLE";
                     break;
                 default:
-                    this.BorderBrush = disabledColor;
-                    this.HeaderGrid.Background = disabledColor;
+                    this.BorderBrush = Collection.ColorCollection.disabledColor;
+                    this.HeaderGrid.Background = Collection.ColorCollection.disabledColor;
                     this.HeaderStatusLabel.Text = "DISABLED";
                     SwitchStateButton.Content = "ENABLE";
                     break;
