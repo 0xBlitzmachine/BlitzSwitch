@@ -128,8 +128,8 @@
                            Stretch='Uniform'
                            Width='Auto'
                            Height='Auto'
-                           HorizontalAlignment='Center'
-                           VerticalAlignment='Top' Canvas.Left='47' Canvas.Top='-3' />
+                           HorizontalAlignment='Left'
+                           VerticalAlignment='Center' Canvas.Left='36' Canvas.Top='-3' />
 
 
 
@@ -140,10 +140,10 @@
                              GotFocus='HotkeyTextBox_GotFocus'
                              LostFocus='HotkeyTextBox_LostFocus'
                              HorizontalAlignment='Center'
-                             VerticalAlignment='Top'
-                             Width='52'
+                             VerticalAlignment='Center'
+                             Width='53'
                              Height='55'
-                             Canvas.Left='59'
+                             Canvas.Left='48'
                              Canvas.Top='2' />
                 </Canvas>
 
