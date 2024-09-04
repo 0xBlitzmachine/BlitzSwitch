@@ -1,3 +1,4 @@
 # BlitzSwitch
 
-<img source="BlitzSwitch\Resources\Animation.gif" width="255" height="255" />
+#### Work in Progress still.
+![Test](https://github.com/0xBlitzmachine/BlitzSwitch/blob/master/BlitzSwitch/Resources/Animation.gif)
