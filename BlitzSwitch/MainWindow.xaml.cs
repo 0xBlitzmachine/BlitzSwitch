@@ -63,13 +63,15 @@ namespace BlitzSwitch
 
         private void HotkeyTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            this.isHotkeyListening = false;
+            this.IsHotkeyListening = false;
+            this.SwitchStateButton.IsEnabled = false;
             this.SetHotkeyButton.IsEnabled = true;
             this.AbortSettingHotkeyButton.IsEnabled = true;
         }
 
         private void HotkeyTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
+            this.SwitchStateButton.IsEnabled = true;
             this.SetHotkeyButton.IsEnabled = false;
             this.AbortSettingHotkeyButton.IsEnabled = false;
         }

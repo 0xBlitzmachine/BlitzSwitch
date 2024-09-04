@@ -4,12 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlitzSwitch"
-        xmlns:UserControls="clr-namespace:BlitzSwitch.UserControls"
         mc:Ignorable="d"
-        
-        Title="MainWindow" 
-        Height="200" 
-        Width="200"
+
+        Title="MainWindow"
+        Height="250"
+        Width="250"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -68,7 +67,7 @@
 
             <Image Grid.Column='0'
                    Stretch='Fill'
-                   Margin='1,1,20,0' 
+                   Margin='1,1,20,0'
                    Source='/Resources/BlackBlitzLogo.png'  />
 
             <TextBlock Grid.Column='1'
@@ -80,7 +79,7 @@
                        Text='BlitzSwitch' />
 
             <!-- Window Controls -->
-            <StackPanel Orientation="Horizontal" 
+            <StackPanel Orientation="Horizontal"
                         Grid.Column="2"
                         HorizontalAlignment='Right'>
 
@@ -114,50 +113,63 @@
                     Content='ENABLE'>
 
             </Button>
-            <StackPanel Grid.Row='1'>
 
-                <StackPanel Orientation='Horizontal'
+            <Grid Grid.Row='1'>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width='*' />
+                    <ColumnDefinition Width='*' />
+                </Grid.ColumnDefinitions>
+
+                <Canvas Grid.Column='0'
+                        Height='Auto'
+                        Width='Auto'>
+
+                    <Image Source='/Resources/Empty_Keystroke_Small.png'
+                           Stretch='Uniform'
+                           Width='Auto'
+                           Height='Auto'
+                           HorizontalAlignment='Center'
+                           VerticalAlignment='Top' Canvas.Left='47' Canvas.Top='-3' />
+
+
+
+                    <TextBox x:Name='HotkeyTextBox'
+                             Text='F2'
+                             Style='{StaticResource CustomTextBoxStyle}'
+                             KeyDown='HotkeyTextBox_KeyDown'
+                             GotFocus='HotkeyTextBox_GotFocus'
+                             LostFocus='HotkeyTextBox_LostFocus'
+                             HorizontalAlignment='Center'
+                             VerticalAlignment='Top'
+                             Width='52'
+                             Height='55'
+                             Canvas.Left='59'
+                             Canvas.Top='2' />
+                </Canvas>
+
+                <StackPanel Grid.Column='1'
+                            Orientation='Vertical'
                             HorizontalAlignment='Center'
-                            VerticalAlignment='Center'>
-                    <Canvas Height='50'
-                            Width='50'>
-
-                        <Image Source='/Resources/Empty_Keystroke_Small.png'
-                               Stretch='Uniform'
-                               Width='50'
-                               Height='50'
-                               HorizontalAlignment='Center' 
-                               VerticalAlignment='Center'/>
+                            VerticalAlignment='Top'>
 
 
 
-                        <TextBox x:Name='HotkeyTextBox' 
-                                 Text='F2' 
-                                 Style='{StaticResource CustomTextBoxStyle}' 
-                                 KeyDown='HotkeyTextBox_KeyDown'
-                                 GotFocus='HotkeyTextBox_GotFocus'
-                                 LostFocus='HotkeyTextBox_LostFocus'
-                                 HorizontalAlignment='Center'
-                                 VerticalAlignment='Center' />
-                    </Canvas>
-
-                    <StackPanel Margin='5'>
-                        <Button x:Name='SetHotkeyButton'
+                    <Button x:Name='SetHotkeyButton'
                             Click='SetHotkeyButton_Click'
                             Content='Set'
                             Style='{StaticResource CustomButtonStyle}'
                             IsEnabled='False'/>
 
-                        <Button x:Name='AbortSettingHotkeyButton'
+                    <Button x:Name='AbortSettingHotkeyButton'
                             Click='AbortSettingHotkeyButton_Click'
-                            Content='Abort' 
+                            Content='Abort'
                             Style='{StaticResource CustomButtonStyle}'
                             IsEnabled='False'/>
-                    </StackPanel>
+
                 </StackPanel>
-            </StackPanel>
+
+            </Grid>
         </Grid>
     </Grid>
 </Window>
 
-    

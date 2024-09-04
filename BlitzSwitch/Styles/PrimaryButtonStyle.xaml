@@ -5,20 +5,20 @@
            TargetType='{x:Type Button}'>
 
         <Setter Property='Background' Value='Transparent' />
-        <Setter Property='Foreground' Value='Gray' />
+        <Setter Property='Foreground' Value='DarkGray' />
         <Setter Property='Margin' Value='5' />
         <Setter Property='Padding' Value='5' />
-        <Setter Property='FontSize' Value='30' />
+        <Setter Property='FontSize' Value='40' />
 
         <Setter Property='Template'>
             <Setter.Value>
                 <ControlTemplate TargetType='{x:Type Button}'>
-                    <ContentPresenter HorizontalAlignment='Center' 
+                    <ContentPresenter HorizontalAlignment='Center'
                                       VerticalAlignment='Center' />
 
                     <ControlTemplate.Triggers>
                         <Trigger Property='IsMouseOver' Value='True'>
-                            <Setter Property='Foreground' Value='DarkGray' />
+                            <Setter Property='Foreground' Value='Gray' />
                         </Trigger>
 
 
