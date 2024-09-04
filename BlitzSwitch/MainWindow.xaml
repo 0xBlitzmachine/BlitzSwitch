@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BlitzSwitch"
+        xmlns:hotkey="clr-namespace:BlitzSwitch.Hotkey"
         mc:Ignorable="d"
 
         Title="MainWindow"
@@ -134,7 +135,7 @@
 
 
                     <TextBox x:Name='HotkeyTextBox'
-                             Text='F2'
+                             Text='{Binding HotkeyString, Mode=TwoWay}'
                              Style='{StaticResource CustomTextBoxStyle}'
                              KeyDown='HotkeyTextBox_KeyDown'
                              GotFocus='HotkeyTextBox_GotFocus'
@@ -155,13 +156,11 @@
 
 
                     <Button x:Name='SetHotkeyButton'
-                            Click='SetHotkeyButton_Click'
                             Content='Set'
                             Style='{StaticResource CustomButtonStyle}'
                             IsEnabled='False'/>
 
                     <Button x:Name='AbortSettingHotkeyButton'
-                            Click='AbortSettingHotkeyButton_Click'
                             Content='Abort'
                             Style='{StaticResource CustomButtonStyle}'
                             IsEnabled='False'/>
