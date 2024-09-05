@@ -9,7 +9,7 @@ namespace BlitzSwitch.Misc
     {
         internal static List<Key> allowedHotkeys = new List<Key>()
         {
-            Key.F1, Key.F2, Key.F2, Key.F3, Key.F4, Key.F5, Key.F6, Key.F7, Key.F8, Key.F9, Key.F10, Key.F11, Key.F12, Key.Delete, Key.Insert, Key.End, Key.NumLock
+            Key.F1, Key.F2, Key.F3, Key.F4, Key.F5, Key.F6, Key.F7, Key.F8, Key.F9, Key.F10, Key.F11, Key.F12, Key.Delete, Key.Insert, Key.End, Key.NumLock
 
         };
 

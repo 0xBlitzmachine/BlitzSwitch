@@ -29,6 +29,10 @@ namespace BlitzSwitch.Hotkey
                     this.UnregisterHotkey();
                     this.RegisterHotkey();
                 }
+                else
+                {
+                    MessageBox.Show("Can't press same key!");
+                }
             }
         }
 
@@ -48,17 +52,21 @@ namespace BlitzSwitch.Hotkey
         private void Window_Closed(object sender, EventArgs e) => this.Dispose();
 
         // Custom WndProc
+        //https://learn.microsoft.com/de-de/windows/win32/inputdev/keyboard-input-notifications
+        //Make sure to only react when it receives a window key input notification
         private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
-            //https://learn.microsoft.com/de-de/windows/win32/inputdev/keyboard-input-notifications
-            //Make sure to only react when it receives a window key input notification
             const int WM_HOTKEY = 0x0312;
             if (msg == WM_HOTKEY && wParam.ToInt32() == this.HotkeyID)
             {
-                if (!(wnd as MainWindow).IsHotkeyListening)
-                    return IntPtr.Zero;
 
-                MessageBox.Show("Intercepted my function!");
+                // FIX THIS AAAH! Can't set F1 as key anymore 
+                // I think, the initial Key is F1 .. When IsHotkeyListening is on false, it just sets handled to true and returns IntPtr.Zero leading the TextBox KeyDown event as handled also.
+                // Low Level interception of window messages are handled here first before any other Event can react to it?
+                MessageBox.Show("WTF");
+                if ((wnd as MainWindow).IsHotkeyListening)
+                    MessageBox.Show("Intercepted my function!");
+
                 handled = true;
             }
             return IntPtr.Zero;

@@ -68,6 +68,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Extensions\MainWindow\ControlEventCollection.cs" />
     <Compile Include="Hotkey\HotkeyInteropHelper.cs" />
     <Compile Include="Hotkey\HotkeyManager.cs" />
     <Compile Include="MainWindow.xaml.cs">

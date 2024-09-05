@@ -8,11 +8,10 @@ namespace BlitzSwitch
 {
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        private readonly App context = Application.Current as App;
         private bool isHotkeyListening = false;
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public HotkeyManager hotkeyManager;
 
         public bool IsHotkeyListening
         {
@@ -28,30 +27,14 @@ namespace BlitzSwitch
             }
         }
 
-        public MainWindow()
-        {
-            this.Loaded += MainWindow_Loaded;
-
-            this.DataContext = this;
-
-            this.InitializeComponent();
-        }
-
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            this.hotkeyManager = new HotkeyManager(this);
-            this.HotkeyTextBox.Text = this.hotkeyManager.Hotkey.ToString();
-            this.hotkeyManager.RegisterHotkey();
+
+            this.context.HKManger = new HotkeyManager(this);
+            this.HotkeyTextBox.Text = this.context.HKManger.Hotkey.ToString();
+            this.context.HKManger.RegisterHotkey();
+
         }
-
-        private void HeaderGrid_MouseDown(object sender, MouseButtonEventArgs e) =>
-            this.DragMove();
-
-        private void MinimizeWindowButton_Click(object sender, RoutedEventArgs e) =>
-            this.WindowState = WindowState.Minimized;
-
-        private void CloseWindowButton_Click(object sender, RoutedEventArgs e) =>
-            Application.Current.Shutdown();
 
         private void HotkeyTextBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -64,13 +47,12 @@ namespace BlitzSwitch
 
         private void SetHotkeyButton_Click(object sender, RoutedEventArgs e)
         {
-            if (hotkeyManager.RegisterHotkey())
-                this.IsHotkeyListening = true;
+
         }
 
         private void AbortSettingHotkeyButton_Click(object sender, RoutedEventArgs e)
         {
-            this.HotkeyTextBox.Text = this.hotkeyManager.Hotkey.ToString();
+
         }
 
         private void HotkeyTextBox_GotFocus(object sender, RoutedEventArgs e)
